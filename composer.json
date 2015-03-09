@@ -1,0 +1,15 @@
+{
+    "name":         "oliverde8/fixed-width-file",
+    "type":         "library",
+    "description":  "Read and Write fixed width files",
+    "license":      "MIT",
+    "authors":      [
+        {
+            "name":     "Oliver de Cramer",
+            "homepage": "http://oliver-decramer.com"
+        }
+    ],
+    "require":      {
+        "php":  ">=5.3.0"
+    }
+}
