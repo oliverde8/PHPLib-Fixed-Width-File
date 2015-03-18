@@ -98,7 +98,6 @@ class Writer {
     {
         $line = '';
         foreach ($this->getHeader()->getWidths() as $code => $width) {
-            echo $code." $width\n";
             if (isset($data[$code])) {
                 $line .= self::padText($data[$code], $width, $this->padString, $this->padType);
             } else {
