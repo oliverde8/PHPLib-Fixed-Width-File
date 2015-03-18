@@ -97,11 +97,13 @@ class Writer {
     public function writeLine($data)
     {
         $line = '';
+        $padTypes = $this->getHeader()->getPadTypes();
         foreach ($this->getHeader()->getWidths() as $code => $width) {
+            $padType = isset($padTypes[$code]) ? $padTypes[$code] : $this->padType;
             if (isset($data[$code])) {
-                $line .= self::padText($data[$code], $width, $this->padString, $this->padType);
+                $line .= self::padText($data[$code], $width, $this->padString, $padType);
             } else {
-                $line .= self::padText('', $width, $this->padString, $this->padType);
+                $line .= self::padText('', $width, $this->padString, $padType);
             }
         }
 
@@ -136,4 +138,4 @@ class Writer {
             return str_pad($text, $width, $padString, $padType);
         }
     }
-} 
+}
