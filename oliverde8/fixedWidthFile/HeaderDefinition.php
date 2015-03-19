@@ -38,23 +38,27 @@ class HeaderDefinition {
     /** @var array List of widths for each column */
     protected $widths = array();
 
+    /** @var array List of padTypes for each column */
+    protected $padTypes = array();
+
     /**
      * Adds a column to the file
      *
      * @param int  $width Width of the column
      * @param null $code Code of the column (the key the data will be in)
      * @param null $name Name of the column (to use if columns are written on first line)
+     * @param null $padType Pad type
      *
      * @return $this
      */
-    public function addColumn($width, $code = null, $name = null)
+    public function addColumn($width, $code = null, $name = null, $padType = null)
     {
         $i = count($this->widths);
         if (is_null($code)) {
             $code = $i;
         }
 
-        $this->editColumn($code, $width, $name);
+        $this->editColumn($code, $width, $name, $padType);
 
         return $this;
     }
@@ -62,16 +66,18 @@ class HeaderDefinition {
     /**
      * Allows modification of an existing columns
      *
-     * @param string $code  Code of the column to modify
-     * @param int    $width New width of the column
-     * @param null   $name  The new name of the column
+     * @param string $code    Code of the column to modify
+     * @param int    $width   New width of the column
+     * @param null   $name    The new name of the column
+     * @param null   $padType Pad type
      *
      * @return $this
      */
-    public function editColumn($code, $width, $name = null)
+    public function editColumn($code, $width, $name = null, $padType = null)
     {
         $this->widths[$code] = $width;
         $this->headers[$code] = $name;
+        $this->padTypes[$code] = $padType;
 
         return $this;
     }
@@ -93,4 +99,12 @@ class HeaderDefinition {
     {
         return $this->headers;
     }
-} 
+
+    /**
+     * @return string[]
+     */
+    public function getPadTypes()
+    {
+        return $this->padTypes;
+    }
+}
