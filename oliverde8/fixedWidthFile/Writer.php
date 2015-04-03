@@ -112,7 +112,13 @@ class Writer {
         return $this;
     }
 
-    /**
+  function __destruct()
+  {
+    $this->terminate();
+  }
+
+
+  /**
      * Finishes writing into the file
      */
     public function terminate()
