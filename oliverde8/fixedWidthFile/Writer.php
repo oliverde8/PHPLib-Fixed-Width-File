@@ -107,7 +107,7 @@ class Writer {
             }
         }
 
-        fwrite($this->file, $line."\n");
+        fwrite($this->file, $line."\r\n");
 
         return $this;
     }
